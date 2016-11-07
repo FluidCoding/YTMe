@@ -53,12 +53,16 @@ class Renderer extends React.Component{
 
 	}
   }
+
   handleChange(e){
     console.log(e.target);
   }
   YoutubeLinkChange(e){
 	  console.log(e.target.value);
 	  this.setState({currentVideoURL: document.getElementById('YoutubeLink').value});
+  }
+  exit(){
+	window.close();
   }
   render(){
 	  console.log("RENDERING")
@@ -67,7 +71,9 @@ class Renderer extends React.Component{
           theme={this.theme}
           padding="0px"
         >
-        <TitleBar title="Youtube Downloader" controls/>
+        <TitleBar title="Youtube Downloader" controls
+		onCloseClick={this.exit}
+		/>
 
         <TextInput
           label="Youtube URL"
