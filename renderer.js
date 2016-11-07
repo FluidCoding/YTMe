@@ -9,6 +9,7 @@ const babel = require('babel-register');
 const yT  = require('ytdl-core');
 const fsys = require('fs');
 import Select from 'react-select';
+import SelectType from './components/SelectType'
 // import 'react-select/dist/react-select.css';c
 
 
@@ -40,10 +41,17 @@ class Renderer extends React.Component{
   downloadVid(){
     const link = document.getElementById('YoutubeLink').value;
     const name = document.getElementById('YoutubeVidName')===null? "" : document.getElementById('YoutubeVidName').value;
-    console.log("DL ", link);
-    var dlstrm = yT(link).pipe(fsys.createWriteStream('./res/' + ( name==="" ? link.substring( link.indexOf("?v=")+3) : name ) + '.mp4') );
-    dlstrm.on('finish', function(){console.log("done!");});
-    console.log("going...", dlstrm);
+	const type = document.getElementById('DownloadType').value;
+    console.log("DL: ", link);
+	console.log('Type: ', type);
+	if(type == 'mp4'){
+    	var dlstrm = yT(link).pipe(fsys.createWriteStream('./res/' + ( name==="" ? link.substring( link.indexOf("?v=")+3) : name ) + '.mp4') );
+    	dlstrm.on('finish', function(){console.log("done downloading video!");});
+    }else{
+    	var dlstrm = yT(link, {filter:'audioonly'}).pipe(fsys.createWriteStream('./res/' + ( name==="" ? link.substring( link.indexOf("?v=")+3) : name ) + '.mp3') );
+    	dlstrm.on('finish', function(){console.log("done downloading audio!");});
+
+	}
   }
   handleChange(e){
     console.log(e.target);
@@ -75,12 +83,16 @@ class Renderer extends React.Component{
           className="label"
           defaultValue=""
           />
-		<Select
+		<SelectType
+		selectValue='video'>
+
+		</SelectType>
+		{/* <Select
 			name="DownloadType"
 			value="mp4"
 			options={this.state.options}
 			onChange={this.handleChange}
-		/>
+		/> */}
         <Button push className="dlBtn"
           onClick={() => this.downloadVid() }>
             Download

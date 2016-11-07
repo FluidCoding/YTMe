@@ -9,6 +9,14 @@ body{
   margin-left: 1.5em;
 }
 
+#DownloadType{
+	margin-top: 5.1ex;
+	height:5ex;
+	width:auto;
+	margin-left: 1.5em;
+	padding: .5em;
+}
+
 #YTMeView{
   height: auto;
   width: auto;
