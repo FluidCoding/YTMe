@@ -8,8 +8,9 @@ import { Text, Label, Button, TextInput, Window, TitleBar } from 'react-desktop/
 const babel = require('babel-register');
 const yT  = require('ytdl-core');
 const fsys = require('fs');
-import Select from 'react-select';
+// import Select from 'react-select';	// Not really a fan of how it looked
 import SelectType from './components/SelectType'
+const app = require('electron');	// Needed for minimize until i figure different way
 // import 'react-select/dist/react-select.css';c
 
 
@@ -64,6 +65,18 @@ class Renderer extends React.Component{
   exit(){
 	window.close();
   }
+
+  show(){
+	  window.show();
+  }
+
+  minimize(){
+	//   console.log(window);?
+	//   console.log(window.getCurrentWindow())
+	  console.log(window.frames)
+	//   window.frames.minimize();
+	  app.remote.BrowserWindow.getAllWindows()[0].minimize();
+  }
   render(){
 	  console.log("RENDERING")
     return (
@@ -73,6 +86,7 @@ class Renderer extends React.Component{
         >
         <TitleBar title="Youtube Downloader" controls
 		onCloseClick={this.exit}
+		onMinimizeClick={this.minimize}
 		/>
 
         <TextInput
@@ -90,9 +104,8 @@ class Renderer extends React.Component{
           defaultValue=""
           />
 		<SelectType
-		selectValue='video'>
+		selectValue='video' />
 
-		</SelectType>
 		{/* <Select
 			name="DownloadType"
 			value="mp4"
