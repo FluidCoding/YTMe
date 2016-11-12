@@ -5,19 +5,34 @@ body{
 }
 .dlBtn{
   height: 5ex;
-  margin-top: 3.1ex;
-  margin-left: 1.5em;
+  margin-top: 3.3ex;
 }
 
 #DownloadType{
-	margin-top: 5.1ex;
+	margin-top: 4.1ex;
 	height:5ex;
 	width:auto;
-	margin-left: 1.5em;
+	margin-right: 1.5em;
 	padding: .5em;
 }
 
 #YTMeView{
   height: auto;
   width: auto;
+}
+
+.label{
+  margin-right: 1.5em;
+}
+
+#TitleBar{
+  padding-right: 3em;
+  margin-right: 4em;
+}
+
+#MainView{
+  border-left: 1px solid darkgray;
+  border-top: 1px solid darkgray;
+  border-right: 9px solid darkgray;
+  border-bottom: 9px solid darkgray;
 }

@@ -1,9 +1,7 @@
-'use babel';
 const React = require('react');
 const ReactDom = require('react-dom');
-const babel = require('babel-register');
 
-class SelectType extends React.Component{
+export default class SelectType extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
@@ -37,5 +35,3 @@ class SelectType extends React.Component{
 	}
 
 }
-
-export default SelectType;

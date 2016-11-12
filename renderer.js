@@ -1,36 +1,28 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
-'use babel';
 const React = require('react');
 const ReactDOM = require ('react-dom');
-import { Text, Label, Button, TextInput, Window, TitleBar } from 'react-desktop/windows';
-const babel = require('babel-register');
 const yT  = require('ytdl-core');
 const fsys = require('fs');
-// import Select from 'react-select';	// Not really a fan of how it looked
+const app = require('electron');
+import { Text, Label, Button, TextInput, Window, TitleBar, View } from 'react-desktop/windows';
 import SelectType from './components/SelectType'
-const app = require('electron');	// Needed for minimize until i figure different way
-// import 'react-select/dist/react-select.css';c
 
 
-class Renderer extends React.Component{
+export default class Renderer extends React.Component{
+
   constructor(props){
-    /// Construct Things
-    // props n stuff
-
     super(props);
     this.theme = 'light';
-	this.state = {
+	  this.state = {
 		currentVideoURL: "",
 		options: [
 			{value: 'mp4', label: 'video' },
 			{value: 'mp3', label: 'audio'}
-		]
-	}
-	this.YoutubeLinkChange = this.YoutubeLinkChange.bind(this);
+	   ]
+	  }
+	  this.YoutubeLinkChange = this.YoutubeLinkChange.bind(this);
   }
-  // We're all mounted n-ready
+
   componentDidMount() {
 	  console.log("mounted");
   }
@@ -40,30 +32,39 @@ class Renderer extends React.Component{
   }
 
   downloadVid(){
+    const dir = './res/';
+    if (!fsys.existsSync(dir))  fsys.mkdirSync(dir);
+
     const link = document.getElementById('YoutubeLink').value;
     const name = document.getElementById('YoutubeVidName')===null? "" : document.getElementById('YoutubeVidName').value;
-	const type = document.getElementById('DownloadType').value;
-    console.log("DL: ", link);
-	console.log('Type: ', type);
-	if(type == 'mp4'){
-    	var dlstrm = yT(link).pipe(fsys.createWriteStream('./res/' + ( name==="" ? link.substring( link.indexOf("?v=")+3) : name ) + '.mp4') );
-    	dlstrm.on('finish', function(){console.log("done downloading video!");});
+    const type = document.getElementById('DownloadType').value;
+    console.log(link,name,type);
+	  if(type == 'mp4'){
+    	var dlstrm = yT(link)
+          .pipe(fsys.createWriteStream('./res/' + ( name==="" ? link.substring( link.indexOf("?v=")+3) : name ) + '.mp4') );
+    	dlstrm.on('finish', function(){
+        console.log("done downloading video!");
+      });
     }else{
-    	var dlstrm = yT(link, {filter:'audioonly'}).pipe(fsys.createWriteStream('./res/' + ( name==="" ? link.substring( link.indexOf("?v=")+3) : name ) + '.mp3') );
-    	dlstrm.on('finish', function(){console.log("done downloading audio!");});
-
-	}
+    	var dlstrm = yT(link, {filter:'audioonly'})
+          .pipe(fsys.createWriteStream('./res/' + ( name==="" ? link.substring( link.indexOf("?v=")+3) : name ) + '.mp3') );
+    	dlstrm.on('finish', function(){
+        console.log("done downloading audio!");
+      });
+	  }
   }
 
   handleChange(e){
     console.log(e.target);
   }
+
   YoutubeLinkChange(e){
 	  console.log(e.target.value);
 	  this.setState({currentVideoURL: document.getElementById('YoutubeLink').value});
   }
+
   exit(){
-	window.close();
+	   window.close();
   }
 
   show(){
@@ -71,56 +72,60 @@ class Renderer extends React.Component{
   }
 
   minimize(){
-	//   console.log(window);?
-	//   console.log(window.getCurrentWindow())
-	  console.log(window.frames)
-	//   window.frames.minimize();
-	  app.remote.BrowserWindow.getAllWindows()[0].minimize();
+    app.remote.BrowserWindow.getAllWindows()[0].minimize();
   }
+
   render(){
-	  console.log("RENDERING")
+
+    var downloadedItems = null;
     return (
-        <Window
-          theme={this.theme}
-          padding="0px"
-        >
+      <Window
+        theme={this.theme}
+        padding="0px"
+      >
         <TitleBar title="Youtube Downloader" controls
-		onCloseClick={this.exit}
-		onMinimizeClick={this.minimize}
-		/>
+          id="TitleBar"
+      		onCloseClick={this.exit}
+      		onMinimizeClick={this.minimize}
+		    />
+        <View
+          id="MainView"
+          background="#f5f5f5"
+          paddingLeft="1em"
+          width="100%"
+          >
 
-        <TextInput
-          label="Youtube URL"
-          placeholder="http://"
-          defaultValue={this.state.currentVideoURL}
-          className="label"
-          id="YoutubeLink"
-		  onChange={this.YoutubeLinkChange}
+          <TextInput
+            label="Youtube URL"
+            placeholder="(http:// | ?v=)"
+            defaultValue={this.state.currentVideoURL}
+            className="label"
+            id="YoutubeLink"
+  		      onChange={this.YoutubeLinkChange}
           />
-        <TextInput
-          label="File Name"
-          placeholder="(optional)"
-          className="label"
-          defaultValue=""
+          <TextInput
+            label="File Name"
+            placeholder="(optional)"
+            className="label"
+            defaultValue=""
           />
-		<SelectType
-		selectValue='video' />
 
-		{/* <Select
-			name="DownloadType"
-			value="mp4"
-			options={this.state.options}
-			onChange={this.handleChange}
-		/> */}
-        <Button push className="dlBtn"
-          onClick={() => this.downloadVid() }>
-            Download
-          </Button>
+          <SelectType
+    		    selectValue='video' />
+
+          <Button push className="dlBtn"
+            onClick={this.downloadVid}
+          >Download</Button>
+        </View>
+        <View
+          id="ItemsView">
+          {downloadedItems}
+        </View>
       </Window>
     )
   }
 }
+
 ReactDOM.render( <Renderer/> ,
   document.getElementById('YTMeView')
 );
-export default Renderer;
