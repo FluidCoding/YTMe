@@ -16,3 +16,6 @@ Youtube Downloader on top of Electron
  - Electron packager `npm install electron-packager -g`
 
 	`electron-packager projDir projName --all --out=outDir --ignore="(node_modules|src)"`
+
+bundle size v1
+1.15 MB (1,213,805 bytes)

@@ -14,18 +14,20 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^1.4.1"
+    "electron": "^1.4.1",
+    "webpack": "2.1.0-beta.25"
   },
   "dependencies": {
+    "babel-loader": "^6.2.7",
     "babel-preset-es2015": "latest",
     "babel-preset-react": "latest",
     "babel-preset-stage-0": "latest",
     "babel-register": "^6.3.13",
     "electron-reload": "latest",
+    "json-loader": "^0.5.4",
     "react": "latest",
     "react-desktop": "latest",
     "react-dom": "latest",
-    "react-select": "^0.9.1",
     "ytdl-core": ""
   },
   "babel": {
