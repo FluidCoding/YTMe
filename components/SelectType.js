@@ -1,5 +1,5 @@
-const React = require('react');
-const ReactDom = require('react-dom');
+import React from 'react';
+import ReactDom from 'react-dom';
 
 export default class SelectType extends React.Component{
 	constructor(props){
@@ -13,6 +13,7 @@ export default class SelectType extends React.Component{
 		}
 		this.handleChange = this.handleChange.bind(this);
 	}
+
 	handleChange(e){
 		console.log('changing');
 		this.setState({selectValue: e.target.value});

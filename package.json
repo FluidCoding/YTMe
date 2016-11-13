@@ -22,6 +22,7 @@
     "babel-preset-stage-0": "latest",
     "babel-register": "^6.3.13",
     "electron-reload": "latest",
+    "ffmpeg": "0.0.4",
     "react": "latest",
     "react-desktop": "latest",
     "react-dom": "latest",

@@ -2,6 +2,7 @@ body{
   height:auto;
   width:auto;
   overflow: hidden;
+  margin: 0px;
 }
 .dlBtn{
   height: 5ex;
@@ -23,16 +24,56 @@ body{
 
 .label{
   margin-right: 1.5em;
+  width: 14em;
 }
 
 #TitleBar{
   padding-right: 3em;
   margin-right: 4em;
+  border-top: 3px solid #d9d9d9;
+  border-left: 2px solid #000000;
 }
 
 #MainView{
-  border-left: 1px solid darkgray;
-  border-top: 1px solid darkgray;
-  border-right: 9px solid darkgray;
-  border-bottom: 9px solid darkgray;
+  border: 1px solid darkgray;
+}
+
+#ItemsView{
+  display: block;
+  /*width: 100%;*/
+  /*flex-direction: column-reverse;*/
+  /*border-left: 2px solid rgba(128, 128, 128, 0.66);
+  margin-left: 1em;*/
+  position: absolute!important;
+  bottom: 19px;
+  right: 0px;
+  left: 0px;
+  /* border: 2px solid black; */
+  border-style: groove;
+  height: 460px;
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: scroll;
+}
+#ItemsView ul{
+  list-style: none;
+  font-family: helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  width: 98%;
+}
+#ItemsView li{
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.mediaTitle{
+  padding-bottom: 0px;
+  /* margin-bottom: 0px; */
+  display: inline-block;
+  padding-right: 1.5em;
+}
+
+.mediaElm{
+  /*width: 35%;*/
 }
