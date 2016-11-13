@@ -3,7 +3,7 @@ const electron = require('electron')
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
-const babel = require('babel-register');
+// const babel = require('babel-register');
 
 
 

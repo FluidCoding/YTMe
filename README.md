@@ -15,4 +15,7 @@ Youtube Downloader on top of Electron
 
  - Electron packager `npm install electron-packager -g`
 
-	`electron-packager projDir projName --all --out=outDir --ignore="(node_modules|src)"`
+	`electron-packager projDir projName --all --out=outDir --ignore="(node_modules|src|res)"`
+
+
+  `electron-packager . YTMe --all --out=outDir --ignore="(node_modules|src|res)" --overwrite`

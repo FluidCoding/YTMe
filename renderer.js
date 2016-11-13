@@ -44,11 +44,18 @@ export default class Renderer extends React.Component{
     console.log(link,name,type);
 	  if(type == 'mp4'){
       yT.getInfo(link, function(err, info){
+        let fileName =  ( name==="" ? info.title : name);
+        fileName = fileName.replace(/[\/\?<>\\:\*\|":]/g, '').replace(/\#/g,'')
+            .replace( /[\x00-\x1f\x80-\x9f]/g, '')
+            .replace( /^\.+$/, '')
+            .replace(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i, '')
+            .replace( /[\. ]+$/, '');
+
         var dlstrm = yT(link)
-            .pipe(fsys.createWriteStream('./res/' + ( name==="" ? info.title : name ) + '.mp4') );
+            .pipe(fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
       	dlstrm.on('finish', function(){
           console.log("done downloading video!");
-          this.setState( {downloadedItems: this.state.downloadedItems.concat({title: name==="" ? info.title : name, ext: '.mp4'}) } );
+          this.setState( {downloadedItems: this.state.downloadedItems.concat({title: fileName, ext: '.mp4'}) } );
           console.log( this.state.downloadedItems );
           this.forceUpdate();
           document.getElementById('YoutubeLink').value = '';
@@ -59,7 +66,7 @@ export default class Renderer extends React.Component{
       yT.getInfo(link, function(err, info){
         console.log(info, 'get this yo');
         let fileName =  ( name==="" ? info.title : name);
-        fileName = fileName.replace(/[\/\?<>\\:\*\|":]/g, '')
+        fileName = fileName.replace(/[\/\?<>\\:\*\|":]/g, '').replace(/\#/g,'')
             .replace( /[\x00-\x1f\x80-\x9f]/g, '')
             .replace( /^\.+$/, '')
             .replace(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i, '')
@@ -83,10 +90,10 @@ export default class Renderer extends React.Component{
           	}, function (err) {
             		console.log('Error: ' + err);
             	});
-            } catch (e) {
-            	console.log(e.code);
-            	console.log(e.msg);
-            }
+          } catch (e) {
+          	console.log(e.code);
+          	console.log(e.msg);
+          }
           console.log("done downloading audio!");
           this.setState( {downloadedItems: this.state.downloadedItems.concat({title:fileName, ext: '.mp4', thmb: info.iurlhq}) } );
           console.log( this.state.downloadedItems );

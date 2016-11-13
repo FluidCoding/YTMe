@@ -17,6 +17,7 @@
     "electron": "^1.4.1"
   },
   "dependencies": {
+    "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "latest",
     "babel-preset-react": "latest",
     "babel-preset-stage-0": "latest",
@@ -26,7 +27,6 @@
     "react": "latest",
     "react-desktop": "latest",
     "react-dom": "latest",
-    "react-select": "^0.9.1",
     "ytdl-core": ""
   },
   "babel": {
