@@ -4,8 +4,8 @@ Youtube Downloader on top of Electron
 
 **Links**
 - [react-desktop](http://reactdesktop.js.org/)
-- ~~[react-select](http://jedwatson.github.io/react-select/)~~
 - [yt-dl](https://github.com/fent/node-ytdl-core)
+
 
 **Interesting**
 
@@ -16,7 +16,3 @@ Youtube Downloader on top of Electron
  - Electron packager `npm install electron-packager -g`
 
 	`electron-packager projDir projName --all --out=outDir --ignore="(node_modules|src)"`
-
-bundle size v1
-
-1.15 MB (1,213,805 bytes)

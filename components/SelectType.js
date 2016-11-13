@@ -15,14 +15,12 @@ export default class SelectType extends React.Component{
 	}
 
 	handleChange(e){
-		console.log('changing');
-		this.setState({selectValue: e.target.value});
+				this.setState({selectValue: e.target.value});
 	}
-	componentDidMount(){
-	//	this.setState({selectValue: this.state.selectValue});
-	}
-	render(){
 
+	componentDidMount(){	}
+
+	render(){
 		var opElms = this.state.options.map( (op) => {
 			return (	<option value={op.value} key={op.value}>{ op.label }</option>	);
 		});

@@ -43,42 +43,59 @@ export default class Renderer extends React.Component{
     const type = document.getElementById('DownloadType').value;
     console.log(link,name,type);
 	  if(type == 'mp4'){
-    	var dlstrm = yT(link)
-          .pipe(fsys.createWriteStream('./res/' + ( name==="" ? link.substring( link.indexOf("?v=")+3) : name ) + '.mp4') );
-    	dlstrm.on('finish', function(){
-
-        this.setState( { downloadedItems: downloadedItems.push({title: name, ext: '.mp4'}) } );
-        console.log("done downloading video!");
-        document.getElementById('YoutubeLink').value = '';
+      yT.getInfo(link, function(err, info){
+        var dlstrm = yT(link)
+            .pipe(fsys.createWriteStream('./res/' + ( name==="" ? info.title : name ) + '.mp4') );
+      	dlstrm.on('finish', function(){
+          console.log("done downloading video!");
+          this.setState( {downloadedItems: this.state.downloadedItems.concat({title: name==="" ? info.title : name, ext: '.mp4'}) } );
+          console.log( this.state.downloadedItems );
+          this.forceUpdate();
+          document.getElementById('YoutubeLink').value = '';
+        }.bind(this));
       }.bind(this));
+
     }else{
-    	var dlstrm = yT(link, {filter:'audioonly'})
-          .pipe(fsys.createWriteStream('./res/' + ( name==="" ? link.substring( link.indexOf("?v=")+3) : name ) + '.mp4') );
-    	dlstrm.on('finish', function(){
+      yT.getInfo(link, function(err, info){
+        console.log(info, 'get this yo');
+        let fileName =  ( name==="" ? info.title : name);
+        fileName = fileName.replace(/[\/\?<>\\:\*\|":]/g, '')
+            .replace( /[\x00-\x1f\x80-\x9f]/g, '')
+            .replace( /^\.+$/, '')
+            .replace(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i, '')
+            .replace( /[\. ]+$/, '');
+        var dlstrm = yT(link, {filter:'audioonly'})
+            .pipe(fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
+      	dlstrm.on('finish', function(){
 
-        try {
-          console.log('trying to audio it ');
-	        var process = new ffmpeg('./res/' + ( name==="" ? link.substring( link.indexOf("?v=")+3) : name ) + '.mp4');
-          process.then(function (video) {
-            console.log('well?', './res/' + ( name==="" ? link.substring( link.indexOf("?v=")+3) : name ) + '.mp4')
-  		      // Callback mode
-  		      video.fnExtractSoundToMP3('./res/' + ( name==="" ? link.substring( link.indexOf("?v=")+3) : name ) + 'a.mp3', function (error, file) {
-              console.log('mp333 pls')
-      			if (!error)
-      				console.log('Audio file: ' + file);
-        		});
-        	}, function (err) {
-          		console.log('Error: ' + err);
-          	});
-          } catch (e) {
-          	console.log(e.code);
-          	console.log(e.msg);
-          }
-        console.log("done downloading audio!");
-        this.setState( {downloadedItems: this.state.downloadedItems.concat({title: name, ext: '.mp4'}) } );
-        console.log( this.state.downloadedItems );
-        this.forceUpdate();
+          console.log("fileName: " + fileName);
+          try {
+            console.log('trying to audio it ');
+  	        var process = new ffmpeg('./res/' + ( fileName ) + '.mp4');
+            process.then(function (video) {
+              console.log('well?', './res/' + ( fileName ) + '.mp4')
+    		      // Callback mode
+    		      video.fnExtractSoundToMP3('./res/' + ( fileName ) + 'a.mp3', function (error, file) {
+                console.log('mp333 pls')
+        			if (!error)
+        				console.log('Audio file: ' + file);
+          		});
+          	}, function (err) {
+            		console.log('Error: ' + err);
+            	});
+            } catch (e) {
+            	console.log(e.code);
+            	console.log(e.msg);
+            }
+          console.log("done downloading audio!");
+          this.setState( {downloadedItems: this.state.downloadedItems.concat({title:fileName, ext: '.mp4', thmb: info.iurlhq}) } );
+          console.log( this.state.downloadedItems );
+          document.getElementById('YoutubeLink').value = '';
+          this.forceUpdate();
+        }.bind(this));
+
       }.bind(this));
+
 	  }
   }
 

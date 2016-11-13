@@ -75,5 +75,7 @@ body{
 }
 
 .mediaElm{
-  /*width: 35%;*/
+  width: 70%;
+  /* float: right; */
+  height: 5ex;
 }
