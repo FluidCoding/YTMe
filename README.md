@@ -2,6 +2,9 @@
 
 Youtube Downloader on top of Electron
 
+![YTME Wip2](https://raw.githubusercontent.com/FluidCoding/YTMe/master/YTMe_wip2.png)
+
+
 **Links**
 - [react-desktop](http://reactdesktop.js.org/)
 - [yt-dl](https://github.com/fent/node-ytdl-core)
