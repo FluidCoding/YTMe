@@ -35,10 +35,10 @@
 const webpack = require('webpack');
 
 module.exports = {
-  // context: __dirname + "./",
-  entry: "./renderer.js",
+  context: __dirname + "",
+  entry: ".\\renderer.js",
   resolve: {
-     extensions: ['.', '.js','.css']
+     extensions: ['', '.js','.css']
   },
   target: "electron",
   module: {
@@ -50,7 +50,7 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        loader: 'json'
+        loader: 'json-loader'
       }
     ],
   },

@@ -76,8 +76,8 @@ export default class Renderer extends React.Component{
             .replace(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i, '')
             .replace( /[\. ]+$/, '');
         var dlstrm = yT(link, {filter:'audioonly'})
-            // .pipe(fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
-            .pipe((new ffmpeg({source:}));//fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
+            .pipe(fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
+            // .pipe((new ffmpeg({source:}));//fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
       	dlstrm.on('finish', function(){
 
           console.log("fileName: " + fileName);

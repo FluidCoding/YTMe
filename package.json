@@ -17,6 +17,7 @@
     "electron": "^1.4.1"
   },
   "dependencies": {
+    "babel-loader": "^6.2.7",
     "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "latest",
     "babel-preset-react": "latest",
@@ -24,6 +25,7 @@
     "babel-register": "^6.3.13",
     "electron-reload": "latest",
     "ffmpeg": "0.0.4",
+    "json-loader": "^0.5.4",
     "react": "latest",
     "react-desktop": "latest",
     "react-dom": "latest",
