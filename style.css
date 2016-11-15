@@ -15,6 +15,18 @@ body{
 	width:auto;
 	margin-right: 1.5em;
 	padding: .5em;
+  background-color: rgb(249, 249, 249);
+  border-width: 2px;
+}
+#DownloadType:hover{
+  border-color: #000;
+
+}
+
+#DownloadType:focus{
+  border-color: rgb(0, 99, 174);
+  border-width: 2px;
+  outline: none;
 }
 
 #YTMeView{
@@ -91,4 +103,40 @@ body{
 #ItemsView img{
   display: flex;
   flex-direction: column;
+}
+.inputContainer{
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.inputLabel{
+  -webkit-user-select: none;
+  cursor: default;
+  line-height: 25.96px;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  display: flex;
+  margin-top: 5px;
+}
+.w10Input{
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(148, 148, 148);
+  padding: 2px 10px 3px;
+  line-height: 23px;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 100;
+  background-color: #f9f9f9;
+  margin-bottom: 18px;
+}
+
+.w10Input:hover{
+  border-color: #111;
+}
+.w10Input:focus{
+  background-color: #fff;
+  border-color: rgb(0, 99, 174);
+  outline: none;
 }

@@ -32,9 +32,14 @@
 //     path: __dirname + "/",
 //   }
 // }
+const webpack = require('webpack');
+
 module.exports = {
-  context: __dirname + "/",
+  // context: __dirname + "./",
   entry: "./renderer.js",
+  resolve: {
+     extensions: ['.', '.js','.css']
+  },
   target: "electron",
   module: {
     loaders: [
@@ -52,10 +57,8 @@ module.exports = {
   output: {
     filename: "bundle.js",
     path: __dirname + "/",
-  }
-  // node: {
-  //   console: true,
-  //   net: 'empty',
-  //   tls: 'empty'
-  // }
+  },
+  plugins: [
+    new webpack.IgnorePlugin(/vertx/)
+  ]
 }

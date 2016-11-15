@@ -31,7 +31,6 @@ export default class DownloadItems extends React.Component{
   render(){
     const location='.\\res\\';
     // Production const location='..\\..\\.\\res\\';
-    console.log(location);
     var items = this.state.items!==undefined ? this.state.items.map( (itm,i)=>{
       const thbnail = itm.thmb===undefined ? null : ( <img height="120px" width="160px" src={itm.thmb}></img> );
       return ( <li key={i}><p key={i+"mt"} onClick={this.openInFolder} className='mediaTitle'>{itm.title}</p><video className='mediaElm' height={(itm.thmb===undefined?'80px':'120px')} src={location + encodeURI( itm.title )+ itm.ext} autoPlay controls ></video>{thbnail}</li> )

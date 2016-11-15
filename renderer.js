@@ -15,32 +15,36 @@ export default class Renderer extends React.Component{
     super(props);
     this.theme = 'light';
 	  this.state = {
-		currentVideoURL: "",
-		options: [
-			{value: 'mp4', label: 'video' },
-			{value: 'mp3', label: 'audio'}
-    ],
-    downloadedItems: []
+  		youtubeVideoURL: "",
+      youtubeVideoName: "",
+      youtubeType: "",
+  		options: [
+  			{value: 'mp4', label: 'video' },
+  			{value: 'mp3', label: 'audio'}
+      ],
+      downloadedItems: []
 	  }
-	  this.YoutubeLinkChange = this.YoutubeLinkChange.bind(this);
-    this.downloadVid = this.downloadVid.bind(this);
+    // Scope pLs
+    this.youtubeVideoURLChange = this.youtubeVideoURLChange.bind(this);
+	  this.youtubeVideoNameChange = this.youtubeVideoNameChange.bind(this);
+    this.downloadVideo = this.downloadVideo.bind(this);
   }
 
   componentDidMount() {
-	  console.log("mounted");
+	  console.log("did mount ");
   }
 
-  componentDidUpdate(p) {
-    console.log('updatesss', p)
+  componentDidUpdate() {
+    console.log('updatesss',  this.state);
   }
 
-  downloadVid(){
+  downloadVideo(){
     const dir = './res/';
     if (!fsys.existsSync(dir))  fsys.mkdirSync(dir);
 
-    const link = document.getElementById('YoutubeLink').value;
-    const name = document.getElementById('YoutubeVidName')=== undefined ? "" : document.getElementById('YoutubeVidName').value;
-    const type = document.getElementById('DownloadType').value;
+    const link = this.state.youtubeVideoURL;
+    const name = this.state.youtubeVideoName;
+    const type = this.state.youtubeType;
     console.log(link,name,type);
 	  if(type == 'mp4'){
       yT.getInfo(link, function(err, info){
@@ -72,7 +76,8 @@ export default class Renderer extends React.Component{
             .replace(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i, '')
             .replace( /[\. ]+$/, '');
         var dlstrm = yT(link, {filter:'audioonly'})
-            .pipe(fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
+            // .pipe(fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
+            .pipe((new ffmpeg({source:}));//fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
       	dlstrm.on('finish', function(){
 
           console.log("fileName: " + fileName);
@@ -106,13 +111,14 @@ export default class Renderer extends React.Component{
 	  }
   }
 
-  handleChange(e){
-    console.log(e.target);
+  youtubeVideoURLChange(e){
+	  // console.log("youtubeVidURL", e.target.value);
+	 this.setState({youtubeVideoURL: e.target.value});
   }
 
-  YoutubeLinkChange(e){
-	  console.log(e.target.value);
-	  this.setState({currentVideoURL: document.getElementById('YoutubeLink').value});
+  youtubeVideoNameChange(e){
+    // console.log("youtubeVideoName", e.target.value)
+    this.setState({youtubeVideoName: e.target.value})
   }
 
   exit(){
@@ -126,9 +132,11 @@ export default class Renderer extends React.Component{
   minimize(){
     app.remote.BrowserWindow.getAllWindows()[0].minimize();
   }
-
+//onChange={(e) => this.youtubeVideoURLChange(e)}          value={this.state.youtubeVideoURL}
   render(){
-
+    console.log('render', this.state);
+    var a = this.props.textt;
+    console.log(a)
     return (
       <Window
         theme={this.theme}
@@ -144,29 +152,42 @@ export default class Renderer extends React.Component{
           background="#f5f5f5"
           paddingLeft="1em"
           width="100%"
+          key="MainView"
           >
 
-          <TextInput
-            label="Youtube URL"
-            placeholder="(http:// | ?v=)"
-            defaultValue={this.state.currentVideoURL}
-            className="label"
-            id="YoutubeLink"
-  		      onChange={this.YoutubeLinkChange}
-          />
-          <TextInput
-            label="File Name"
-            placeholder="(optional)"
-            className="label"
-            id="YoutubeVidName"
-            defaultValue=""
-          />
+        <div className="inputContainer">
+          <label htmlFor="YoutubeVideoURL"
+              className="inputLabel"
+            >YouTube URL</label>
+        <input
+          type="text"
+          id="YoutubeVideoURL"
+          className="w10Input label"
+          placeholder="(http:// | ?v=)"
+          value={this.state.YoutubeVideoURL}
+          onChange={this.youtubeVideoURLChange}
+          ></input>
+        </div>
+
+        <div className="inputContainer">
+          <label htmlFor="YoutubeVideoName"
+              className="inputLabel"
+            >File Name</label>
+        <input
+          type="text"
+          id="YoutubeVideoName"
+          className="w10Input label"
+          placeholder="(optional)"
+          value={this.state.youtubeVideoName}
+          onChange={this.youtubeVideoNameChange}
+          ></input>
+        </div>
 
           <SelectType
     		    selectValue='video' />
 
           <Button push className="dlBtn"
-            onClick={this.downloadVid}
+            onClick={this.downloadVideo}
           >Download</Button>
           <View
             id="ItemsView">

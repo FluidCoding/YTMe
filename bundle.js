@@ -16012,7 +16012,6 @@ var DownloadItems = function (_React$Component) {
 
       var location = '.\\res\\';
       // Production const location='..\\..\\.\\res\\';
-      console.log(location);
       var items = this.state.items !== undefined ? this.state.items.map(function (itm, i) {
         var thbnail = itm.thmb === undefined ? null : _react2.default.createElement('img', { height: '120px', width: '160px', src: itm.thmb });
         return _react2.default.createElement(
@@ -39073,34 +39072,38 @@ var Renderer = function (_React$Component) {
 
     _this.theme = 'light';
     _this.state = {
-      currentVideoURL: "",
+      youtubeVideoURL: "",
+      youtubeVideoName: "",
+      youtubeType: "",
       options: [{ value: 'mp4', label: 'video' }, { value: 'mp3', label: 'audio' }],
       downloadedItems: []
     };
-    _this.YoutubeLinkChange = _this.YoutubeLinkChange.bind(_this);
-    _this.downloadVid = _this.downloadVid.bind(_this);
+    // Scope pLs
+    _this.youtubeVideoURLChange = _this.youtubeVideoURLChange.bind(_this);
+    _this.youtubeVideoNameChange = _this.youtubeVideoNameChange.bind(_this);
+    _this.downloadVideo = _this.downloadVideo.bind(_this);
     return _this;
   }
 
   _createClass(Renderer, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      console.log("mounted");
+      console.log("did mount ");
     }
   }, {
     key: 'componentDidUpdate',
-    value: function componentDidUpdate(p) {
-      console.log('updatesss', p);
+    value: function componentDidUpdate() {
+      console.log('updatesss', this.state);
     }
   }, {
-    key: 'downloadVid',
-    value: function downloadVid() {
+    key: 'downloadVideo',
+    value: function downloadVideo() {
       var dir = './res/';
       if (!_fs2.default.existsSync(dir)) _fs2.default.mkdirSync(dir);
 
-      var link = document.getElementById('YoutubeLink').value;
-      var name = document.getElementById('YoutubeVidName') === undefined ? "" : document.getElementById('YoutubeVidName').value;
-      var type = document.getElementById('DownloadType').value;
+      var link = this.state.youtubeVideoURL;
+      var name = this.state.youtubeVideoName;
+      var type = this.state.youtubeType;
       console.log(link, name, type);
       if (type == 'mp4') {
         _ytdlCore2.default.getInfo(link, function (err, info) {
@@ -39122,26 +39125,28 @@ var Renderer = function (_React$Component) {
           var fileName = name === "" ? info.title : name;
           fileName = fileName.replace(/[\/\?<>\\:\*\|":]/g, '').replace(/\#/g, '').replace(/[\x00-\x1f\x80-\x9f]/g, '').replace(/^\.+$/, '').replace(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i, '').replace(/[\. ]+$/, '');
           var dlstrm = (0, _ytdlCore2.default)(link, { filter: 'audioonly' }).pipe(_fs2.default.createWriteStream('./res/' + fileName + '.mp4'));
+          //.pipe((new ffmpeg({source:}))//fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
           dlstrm.on('finish', function () {
 
             console.log("fileName: " + fileName);
-            try {
-              console.log('trying to audio it ');
-              var process = new _ffmpeg2.default('./res/' + fileName + '.mp4');
-              process.then(function (video) {
-                console.log('well?', './res/' + fileName + '.mp4');
-                // Callback mode
-                video.fnExtractSoundToMP3('./res/' + fileName + 'a.mp3', function (error, file) {
-                  console.log('mp333 pls');
-                  if (!error) console.log('Audio file: ' + file);
-                });
-              }, function (err) {
-                console.log('Error: ' + err);
-              });
-            } catch (e) {
-              console.log(e.code);
-              console.log(e.msg);
-            }
+            // try {
+            //   console.log('trying to audio it ');
+            //   var process = new ffmpeg('./res/' + ( fileName ) + '.mp4');
+            //   process.then(function (video) {
+            //     console.log('well?', './res/' + ( fileName ) + '.mp4')
+            //     // Callback mode
+            //     video.fnExtractSoundToMP3('./res/' + ( fileName ) + 'a.mp3', function (error, file) {
+            //       console.log('mp333 pls')
+            // 		if (!error)
+            // 			console.log('Audio file: ' + file);
+            // 		});
+            // 	}, function (err) {
+            //   		console.log('Error: ' + err);
+            //   	});
+            // } catch (e) {
+            // 	console.log(e.code);
+            // 	console.log(e.msg);
+            // }
             console.log("done downloading audio!");
             this.setState({ downloadedItems: this.state.downloadedItems.concat({ title: fileName, ext: '.mp4', thmb: info.iurlhq }) });
             console.log(this.state.downloadedItems);
@@ -39152,15 +39157,16 @@ var Renderer = function (_React$Component) {
       }
     }
   }, {
-    key: 'handleChange',
-    value: function handleChange(e) {
-      console.log(e.target);
+    key: 'youtubeVideoURLChange',
+    value: function youtubeVideoURLChange(e) {
+      // console.log("youtubeVidURL", e.target.value);
+      this.setState({ youtubeVideoURL: e.target.value });
     }
   }, {
-    key: 'YoutubeLinkChange',
-    value: function YoutubeLinkChange(e) {
-      console.log(e.target.value);
-      this.setState({ currentVideoURL: document.getElementById('YoutubeLink').value });
+    key: 'youtubeVideoNameChange',
+    value: function youtubeVideoNameChange(e) {
+      // console.log("youtubeVideoName", e.target.value)
+      this.setState({ youtubeVideoName: e.target.value });
     }
   }, {
     key: 'exit',
@@ -39177,10 +39183,14 @@ var Renderer = function (_React$Component) {
     value: function minimize() {
       _electron2.default.remote.BrowserWindow.getAllWindows()[0].minimize();
     }
+    //onChange={(e) => this.youtubeVideoURLChange(e)}          value={this.state.youtubeVideoURL}
+
   }, {
     key: 'render',
     value: function render() {
-
+      console.log('render', this.state);
+      var a = this.props.textt;
+      console.log(a);
       return _react2.default.createElement(
         _windows.Window,
         {
@@ -39198,29 +39208,53 @@ var Renderer = function (_React$Component) {
             id: 'MainView',
             background: '#f5f5f5',
             paddingLeft: '1em',
-            width: '100%'
+            width: '100%',
+            key: 'MainView'
           },
-          _react2.default.createElement(_windows.TextInput, {
-            label: 'Youtube URL',
-            placeholder: '(http:// | ?v=)',
-            defaultValue: this.state.currentVideoURL,
-            className: 'label',
-            id: 'YoutubeLink',
-            onChange: this.YoutubeLinkChange
-          }),
-          _react2.default.createElement(_windows.TextInput, {
-            label: 'File Name',
-            placeholder: '(optional)',
-            className: 'label',
-            id: 'YoutubeVidName',
-            defaultValue: ''
-          }),
+          _react2.default.createElement(
+            'div',
+            { className: 'inputContainer' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'YoutubeVideoURL',
+                className: 'inputLabel'
+              },
+              'YouTube URL'
+            ),
+            _react2.default.createElement('input', {
+              type: 'text',
+              id: 'YoutubeVideoURL',
+              className: 'w10Input label',
+              placeholder: '(http:// | ?v=)',
+              value: this.state.YoutubeVideoURL,
+              onChange: this.youtubeVideoURLChange
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'inputContainer' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'YoutubeVideoName',
+                className: 'inputLabel'
+              },
+              'File Name'
+            ),
+            _react2.default.createElement('input', {
+              type: 'text',
+              id: 'YoutubeVideoName',
+              className: 'w10Input label',
+              placeholder: '(optional)',
+              value: this.state.youtubeVideoName,
+              onChange: this.youtubeVideoNameChange
+            })
+          ),
           _react2.default.createElement(_SelectType2.default, {
             selectValue: 'video' }),
           _react2.default.createElement(
             _windows.Button,
             { push: true, className: 'dlBtn',
-              onClick: this.downloadVid
+              onClick: this.downloadVideo
             },
             'Download'
           ),
