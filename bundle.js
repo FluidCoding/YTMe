@@ -39079,9 +39079,9 @@ var Renderer = function (_React$Component) {
       options: [{ value: 'mp4', label: 'video' }, { value: 'mp3', label: 'audio' }],
       downloadedItems: []
     };
+
     // Scope pLs
-    _this.youtubeVideoURLChange = _this.youtubeVideoURLChange.bind(_this);
-    _this.youtubeVideoNameChange = _this.youtubeVideoNameChange.bind(_this);
+
     _this.downloadVideo = _this.downloadVideo.bind(_this);
     return _this;
   }
@@ -39157,18 +39157,6 @@ var Renderer = function (_React$Component) {
       }
     }
   }, {
-    key: 'youtubeVideoURLChange',
-    value: function youtubeVideoURLChange(e) {
-      // console.log("youtubeVidURL", e.target.value);
-      this.setState({ youtubeVideoURL: e.target.value });
-    }
-  }, {
-    key: 'youtubeVideoNameChange',
-    value: function youtubeVideoNameChange(e) {
-      // console.log("youtubeVideoName", e.target.value)
-      this.setState({ youtubeVideoName: e.target.value });
-    }
-  }, {
     key: 'exit',
     value: function exit() {
       window.close();
@@ -39183,11 +39171,11 @@ var Renderer = function (_React$Component) {
     value: function minimize() {
       _electron2.default.remote.BrowserWindow.getAllWindows()[0].minimize();
     }
-    //onChange={(e) => this.youtubeVideoURLChange(e)}          value={this.state.youtubeVideoURL}
-
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       console.log('render', this.state);
       var a = this.props.textt;
       console.log(a);
@@ -39227,7 +39215,9 @@ var Renderer = function (_React$Component) {
               className: 'w10Input label',
               placeholder: '(http:// | ?v=)',
               value: this.state.YoutubeVideoURL,
-              onChange: this.youtubeVideoURLChange
+              onChange: function onChange(e) {
+                return _this2.setState({ youtubeVideoURL: e.target.value });
+              }
             })
           ),
           _react2.default.createElement(
@@ -39246,12 +39236,14 @@ var Renderer = function (_React$Component) {
               className: 'w10Input label',
               placeholder: '(optional)',
               value: this.state.youtubeVideoName,
-              onChange: this.youtubeVideoNameChange
+              onChange: function onChange(e) {
+                return _this2.setState({ youtubeVideoName: e.target.value });
+              }
             })
           ),
           _react2.default.createElement(_SelectType2.default, {
-            onChange: function onChange(watEven) {
-              return console.log(watEven);
+            handleChange: function handleChange(e) {
+              return _this2.setState({ youtubeType: e.target.value });
             },
             selectValue: 'video' }),
           _react2.default.createElement(

@@ -24,9 +24,9 @@ export default class Renderer extends React.Component{
       ],
       downloadedItems: []
 	  }
+
     // Scope pLs
-    this.youtubeVideoURLChange = this.youtubeVideoURLChange.bind(this);
-	  this.youtubeVideoNameChange = this.youtubeVideoNameChange.bind(this);
+
     this.downloadVideo = this.downloadVideo.bind(this);
   }
 
@@ -111,16 +111,6 @@ export default class Renderer extends React.Component{
 	  }
   }
 
-  youtubeVideoURLChange(e){
-	  // console.log("youtubeVidURL", e.target.value);
-	 this.setState({youtubeVideoURL: e.target.value});
-  }
-
-  youtubeVideoNameChange(e){
-    // console.log("youtubeVideoName", e.target.value)
-    this.setState({youtubeVideoName: e.target.value})
-  }
-
   exit(){
 	   window.close();
   }
@@ -132,7 +122,7 @@ export default class Renderer extends React.Component{
   minimize(){
     app.remote.BrowserWindow.getAllWindows()[0].minimize();
   }
-//onChange={(e) => this.youtubeVideoURLChange(e)}          value={this.state.youtubeVideoURL}
+
   render(){
     console.log('render', this.state);
     var a = this.props.textt;
@@ -165,7 +155,7 @@ export default class Renderer extends React.Component{
           className="w10Input label"
           placeholder="(http:// | ?v=)"
           value={this.state.YoutubeVideoURL}
-          onChange={this.youtubeVideoURLChange}
+          onChange={ (e)=> this.setState({youtubeVideoURL: e.target.value}) }
           ></input>
         </div>
 
@@ -179,12 +169,12 @@ export default class Renderer extends React.Component{
           className="w10Input label"
           placeholder="(optional)"
           value={this.state.youtubeVideoName}
-          onChange={this.youtubeVideoNameChange}
+          onChange={ (e)=> this.setState({youtubeVideoName: e.target.value}) }
           ></input>
         </div>
 
           <SelectType
-            onChange={ (watEven) => console.log(watEven) }
+            handleChange={ (e) => this.setState({youtubeType: e.target.value}) }
     		    selectValue='video' />
 
           <Button push className="dlBtn"
