@@ -15,7 +15,7 @@ export default class Renderer extends React.Component{
     super(props);
     this.theme = 'light';
 	  this.state = {
-  		youtubeVideoURL: "",
+			youtubeVideoURL: "",
       youtubeVideoName: "",
       youtubeType: "",
   		options: [
@@ -48,7 +48,7 @@ export default class Renderer extends React.Component{
     console.log(link,name,type);
 	  if(type == 'mp4'){
       yT.getInfo(link, function(err, info){
-        let fileName =  ( name==="" ? info.title : name);
+        let fileName =  ( name==="" ? info.title : name );
         fileName = fileName.replace(/[\/\?<>\\:\*\|":]/g, '').replace(/\#/g,'')
             .replace( /[\x00-\x1f\x80-\x9f]/g, '')
             .replace( /^\.+$/, '')
@@ -59,10 +59,9 @@ export default class Renderer extends React.Component{
             .pipe(fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
       	dlstrm.on('finish', function(){
           console.log("done downloading video!");
-          this.setState( {downloadedItems: this.state.downloadedItems.concat({title: fileName, ext: '.mp4'}) } );
+          this.setState( {downloadedItems: this.state.downloadedItems.concat({title: fileName, ext: '.mp4'}), youtubeVideoURL: '' } );
           console.log( this.state.downloadedItems );
-          this.forceUpdate();
-          document.getElementById('YoutubeLink').value = '';
+					this.forceUpdate();
         }.bind(this));
       }.bind(this));
 
@@ -100,9 +99,8 @@ export default class Renderer extends React.Component{
           	console.log(e.msg);
           }
           console.log("done downloading audio!");
-          this.setState( {downloadedItems: this.state.downloadedItems.concat({title:fileName, ext: '.mp4', thmb: info.iurlhq}) } );
+          this.setState( {downloadedItems: this.state.downloadedItems.concat({title:fileName, ext: '.mp4', thmb: info.iurlhq}) , youtubeVideoURL: '' } );
           console.log( this.state.downloadedItems );
-          document.getElementById('YoutubeLink').value = '';
           this.forceUpdate();
         }.bind(this));
 

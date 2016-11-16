@@ -39114,10 +39114,9 @@ var Renderer = function (_React$Component) {
           var dlstrm = (0, _ytdlCore2.default)(link).pipe(_fs2.default.createWriteStream('./res/' + fileName + '.mp4'));
           dlstrm.on('finish', function () {
             console.log("done downloading video!");
-            this.setState({ downloadedItems: this.state.downloadedItems.concat({ title: fileName, ext: '.mp4' }) });
+            this.setState({ downloadedItems: this.state.downloadedItems.concat({ title: fileName, ext: '.mp4' }), youtubeVideoURL: '' });
             console.log(this.state.downloadedItems);
             this.forceUpdate();
-            document.getElementById('YoutubeLink').value = '';
           }.bind(this));
         }.bind(this));
       } else {
@@ -39148,9 +39147,8 @@ var Renderer = function (_React$Component) {
               console.log(e.msg);
             }
             console.log("done downloading audio!");
-            this.setState({ downloadedItems: this.state.downloadedItems.concat({ title: fileName, ext: '.mp4', thmb: info.iurlhq }) });
+            this.setState({ downloadedItems: this.state.downloadedItems.concat({ title: fileName, ext: '.mp4', thmb: info.iurlhq }), youtubeVideoURL: '' });
             console.log(this.state.downloadedItems);
-            document.getElementById('YoutubeLink').value = '';
             this.forceUpdate();
           }.bind(this));
         }.bind(this));
