@@ -152,7 +152,7 @@ export default class Renderer extends React.Component{
           id="YoutubeVideoURL"
           className="w10Input label"
           placeholder="(http:// | ?v=)"
-          value={this.state.YoutubeVideoURL}
+          value={this.state.youtubeVideoURL}
           onChange={ (e)=> this.setState({youtubeVideoURL: e.target.value}) }
           ></input>
         </div>

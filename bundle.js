@@ -39212,7 +39212,7 @@ var Renderer = function (_React$Component) {
               id: 'YoutubeVideoURL',
               className: 'w10Input label',
               placeholder: '(http:// | ?v=)',
-              value: this.state.YoutubeVideoURL,
+              value: this.state.youtubeVideoURL,
               onChange: function onChange(e) {
                 return _this2.setState({ youtubeVideoURL: e.target.value });
               }
