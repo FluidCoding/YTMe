@@ -184,6 +184,7 @@ export default class Renderer extends React.Component{
         </div>
 
           <SelectType
+            onChange={ (watEven) => console.log(watEven) }
     		    selectValue='video' />
 
           <Button push className="dlBtn"

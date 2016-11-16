@@ -15,15 +15,14 @@ export default class SelectType extends React.Component{
 	}
 
 	handleChange(e){
-				this.setState({selectValue: e.target.value});
+		this.props.handleChange(e);
+		this.setState({selectValue: e.target.value});
 	}
 
 	componentDidMount(){	}
 
 	render(){
-		var opElms = this.state.options.map( (op) => {
-			return (	<option value={op.value} key={op.value}>{ op.label }</option>	);
-		});
+		var opElms = this.state.options.map( (op) => {	return (	<option value={op.value} key={op.value}>{ op.label }</option>	);	});
 
 		return (
 			<select id="DownloadType" size="1" defaultValue={this.state.selectValue} onChange={this.handleChange}>
