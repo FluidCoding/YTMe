@@ -22,7 +22,7 @@ export default class SelectType extends React.Component{
 	componentDidMount(){	}
 
 	render(){
-		var opElms = this.state.options.map( (op) => {	return (	<option value={op.value} key={op.value}>{ op.label }</option>	);	});
+		const opElms = this.state.options.map( (op) => {	return (	<option value={op.value} key={op.value}>{ op.label }</option>	);	});
 
 		return (
 			<select id="DownloadType" size="1" defaultValue={this.state.selectValue} onChange={this.handleChange}>

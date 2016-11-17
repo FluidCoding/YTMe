@@ -14,16 +14,16 @@ export default class Renderer extends React.Component{
   constructor(props){
     super(props);
     this.theme = 'light';
-	  this.state = {
-			youtubeVideoURL: "",
-      youtubeVideoName: "",
-      youtubeType: "",
-  		options: [
-  			{value: 'mp4', label: 'video' },
-  			{value: 'mp3', label: 'audio'}
-      ],
-      downloadedItems: []
-	  }
+	this.state = {
+	youtubeVideoURL: "",
+     youtubeVideoName: "",
+     youtubeType: "",
+  	options: [
+  		{value: 'mp4', label: 'video' },
+  		{value: 'mp3', label: 'audio'}
+     ],
+     downloadedItems: []
+	}
 
     // Scope pLs
 
@@ -153,7 +153,7 @@ export default class Renderer extends React.Component{
           className="w10Input label"
           placeholder="(http:// | ?v=)"
           value={this.state.youtubeVideoURL}
-          onChange={ (e)=> this.setState({youtubeVideoURL: e.target.value}) }
+          onChange={ (e) => this.setState({youtubeVideoURL: e.target.value}) }
           ></input>
         </div>
 
@@ -167,7 +167,7 @@ export default class Renderer extends React.Component{
           className="w10Input label"
           placeholder="(optional)"
           value={this.state.youtubeVideoName}
-          onChange={ (e)=> this.setState({youtubeVideoName: e.target.value}) }
+          onChange={ (e) => this.setState({youtubeVideoName: e.target.value}) }
           ></input>
         </div>
 
