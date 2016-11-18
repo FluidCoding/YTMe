@@ -15943,7 +15943,7 @@ module.exports = require("stream");
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -15969,76 +15969,76 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var DownloadItems = function (_React$Component) {
-  _inherits(DownloadItems, _React$Component);
+	_inherits(DownloadItems, _React$Component);
 
-  function DownloadItems(props) {
-    _classCallCheck(this, DownloadItems);
+	function DownloadItems(props) {
+		_classCallCheck(this, DownloadItems);
 
-    var _this = _possibleConstructorReturn(this, (DownloadItems.__proto__ || Object.getPrototypeOf(DownloadItems)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (DownloadItems.__proto__ || Object.getPrototypeOf(DownloadItems)).call(this, props));
 
-    _this.state = {
-      items: _this.props.items
-    };
-    _this.openInFolder = _this.openInFolder.bind(_this);
-    return _this;
-  }
+		_this.state = {
+			items: _this.props.items
+		};
+		_this.openInFolder = _this.openInFolder.bind(_this);
+		return _this;
+	}
 
-  _createClass(DownloadItems, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {}
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate(props) {
-      if (props.items !== this.state.items) this.setState({ items: props.items });
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(props) {}
-  }, {
-    key: 'openInFolder',
-    value: function openInFolder(i) {
-      var location = '\\res\\';
-      // console.log(app, i ,location + this.state.items[i].title + this.state.items[i].ext , this.state.items.length);
-      // Production const location='..\\..\\.\\res\\';
-      // if(this.state.items!==undefined && this.state.items.length>=i)
-      //   app.shell.showItemInFolder(app.remote.app.getAppPath() + location + this.state.items[i].title + this.state.items[i].ext);
-      _electron2.default.shell.showItemInFolder(_electron2.default.remote.app.getAppPath() + location + ".");
-      console.log(this);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
+	_createClass(DownloadItems, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {}
+	}, {
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate(props) {
+			if (props.items !== this.state.items) this.setState({ items: props.items });
+		}
+	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(props) {}
+	}, {
+		key: 'openInFolder',
+		value: function openInFolder(i) {
+			var location = '\\res\\';
+			// console.log(app, i ,location + this.state.items[i].title + this.state.items[i].ext , this.state.items.length);
+			// Production const location='..\\..\\.\\res\\';
+			// if(this.state.items!==undefined && this.state.items.length>=i)
+			//	 app.shell.showItemInFolder(app.remote.app.getAppPath() + location + this.state.items[i].title + this.state.items[i].ext);
+			_electron2.default.shell.showItemInFolder(_electron2.default.remote.app.getAppPath() + location + ".");
+			console.log(this);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-      var location = '.\\res\\';
-      // Production const location='..\\..\\.\\res\\';
-      var items = this.state.items !== undefined ? this.state.items.map(function (itm, i) {
-        var thbnail = itm.thmb === undefined ? null : _react2.default.createElement('img', { height: '120px', width: '160px', src: itm.thmb });
-        return _react2.default.createElement(
-          'li',
-          { key: i },
-          _react2.default.createElement(
-            'p',
-            { key: i + "mt", onClick: _this2.openInFolder, className: 'mediaTitle' },
-            itm.title
-          ),
-          _react2.default.createElement('video', { className: 'mediaElm', height: itm.thmb === undefined ? '80px' : '120px', src: location + encodeURI(itm.title) + itm.ext, autoPlay: true, controls: true }),
-          thbnail
-        );
-      }) : _react2.default.createElement(
-        'li',
-        null,
-        'Download Something...'
-      );
-      return _react2.default.createElement(
-        'ul',
-        null,
-        items
-      );
-    }
-  }]);
+			var location = '.\\res\\';
+			// Production const location='..\\..\\.\\res\\';
+			var items = this.state.items !== undefined ? this.state.items.map(function (itm, i) {
+				var thbnail = itm.thmb === undefined ? null : _react2.default.createElement('img', { height: '120px', width: '160px', src: itm.thmb });
+				return _react2.default.createElement(
+					'li',
+					{ key: i },
+					_react2.default.createElement(
+						'p',
+						{ key: i + "mt", onClick: _this2.openInFolder, className: 'mediaTitle' },
+						itm.title
+					),
+					_react2.default.createElement('video', { className: 'mediaElm', height: itm.thmb === undefined ? '80px' : '120px', src: location + encodeURI(itm.title) + itm.ext, autoPlay: true, controls: true }),
+					thbnail
+				);
+			}) : _react2.default.createElement(
+				'li',
+				null,
+				'Download Something...'
+			);
+			return _react2.default.createElement(
+				'ul',
+				null,
+				items
+			);
+		}
+	}]);
 
-  return DownloadItems;
+	return DownloadItems;
 }(_react2.default.Component);
 
 exports.default = DownloadItems;
@@ -39015,7 +39015,7 @@ module.exports = require("util");
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -39064,206 +39064,206 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var Renderer = function (_React$Component) {
-  _inherits(Renderer, _React$Component);
+	_inherits(Renderer, _React$Component);
 
-  function Renderer(props) {
-    _classCallCheck(this, Renderer);
+	function Renderer(props) {
+		_classCallCheck(this, Renderer);
 
-    var _this = _possibleConstructorReturn(this, (Renderer.__proto__ || Object.getPrototypeOf(Renderer)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Renderer.__proto__ || Object.getPrototypeOf(Renderer)).call(this, props));
 
-    _this.theme = 'light';
-    _this.state = {
-      youtubeVideoURL: "",
-      youtubeVideoName: "",
-      youtubeType: "",
-      options: [{ value: 'mp4', label: 'video' }, { value: 'mp3', label: 'audio' }],
-      downloadedItems: []
-    };
+		_this.theme = 'light';
+		_this.state = {
+			youtubeVideoURL: "",
+			youtubeVideoName: "",
+			youtubeType: "",
+			options: [{ value: 'mp4', label: 'video' }, { value: 'mp3', label: 'audio' }],
+			downloadedItems: []
+		};
 
-    // Scope pLs
+		// Scope pLs
 
-    _this.downloadVideo = _this.downloadVideo.bind(_this);
-    return _this;
-  }
+		_this.downloadVideo = _this.downloadVideo.bind(_this);
+		return _this;
+	}
 
-  _createClass(Renderer, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      console.log("did mount ");
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      console.log('updatesss', this.state);
-    }
-  }, {
-    key: 'downloadVideo',
-    value: function downloadVideo() {
-      var dir = './res/';
-      if (!_fs2.default.existsSync(dir)) _fs2.default.mkdirSync(dir);
+	_createClass(Renderer, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			console.log("did mount ");
+		}
+	}, {
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate() {
+			console.log('updatesss', this.state);
+		}
+	}, {
+		key: 'downloadVideo',
+		value: function downloadVideo() {
+			var dir = './res/';
+			if (!_fs2.default.existsSync(dir)) _fs2.default.mkdirSync(dir);
 
-      var link = this.state.youtubeVideoURL;
-      var name = this.state.youtubeVideoName;
-      var type = this.state.youtubeType;
-      console.log(link, name, type);
-      if (type == 'mp4') {
-        _ytdlCore2.default.getInfo(link, function (err, info) {
-          var fileName = name === "" ? info.title : name;
-          fileName = fileName.replace(/[\/\?<>\\:\*\|":]/g, '').replace(/\#/g, '').replace(/[\x00-\x1f\x80-\x9f]/g, '').replace(/^\.+$/, '').replace(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i, '').replace(/[\. ]+$/, '');
+			var link = this.state.youtubeVideoURL;
+			var name = this.state.youtubeVideoName;
+			var type = this.state.youtubeType;
+			console.log(link, name, type);
+			if (type == 'mp4') {
+				_ytdlCore2.default.getInfo(link, function (err, info) {
+					var fileName = name === "" ? info.title : name;
+					fileName = fileName.replace(/[\/\?<>\\:\*\|":]/g, '').replace(/\#/g, '').replace(/[\x00-\x1f\x80-\x9f]/g, '').replace(/^\.+$/, '').replace(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i, '').replace(/[\. ]+$/, '');
 
-          var dlstrm = (0, _ytdlCore2.default)(link).pipe(_fs2.default.createWriteStream('./res/' + fileName + '.mp4'));
-          dlstrm.on('finish', function () {
-            console.log("done downloading video!");
-            this.setState({ downloadedItems: this.state.downloadedItems.concat({ title: fileName, ext: '.mp4' }), youtubeVideoURL: '' });
-            console.log(this.state.downloadedItems);
-            this.forceUpdate();
-          }.bind(this));
-        }.bind(this));
-      } else {
-        _ytdlCore2.default.getInfo(link, function (err, info) {
-          console.log(info, 'get this yo');
-          var fileName = name === "" ? info.title : name;
-          fileName = fileName.replace(/[\/\?<>\\:\*\|":]/g, '').replace(/\#/g, '').replace(/[\x00-\x1f\x80-\x9f]/g, '').replace(/^\.+$/, '').replace(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i, '').replace(/[\. ]+$/, '');
-          var dlstrm = (0, _ytdlCore2.default)(link, { filter: 'audioonly' }).pipe(_fs2.default.createWriteStream('./res/' + fileName + '.mp4'));
-          // .pipe((new ffmpeg({source:}));//fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
-          dlstrm.on('finish', function () {
+					var dlstrm = (0, _ytdlCore2.default)(link).pipe(_fs2.default.createWriteStream('./res/' + fileName + '.mp4'));
+					dlstrm.on('finish', function () {
+						console.log("done downloading video!");
+						this.setState({ downloadedItems: this.state.downloadedItems.concat({ title: fileName, ext: '.mp4' }), youtubeVideoURL: '' });
+						console.log(this.state.downloadedItems);
+						this.forceUpdate();
+					}.bind(this));
+				}.bind(this));
+			} else {
+				_ytdlCore2.default.getInfo(link, function (err, info) {
+					console.log(info, 'get this yo');
+					var fileName = name === "" ? info.title : name;
+					fileName = fileName.replace(/[\/\?<>\\:\*\|":]/g, '').replace(/\#/g, '').replace(/[\x00-\x1f\x80-\x9f]/g, '').replace(/^\.+$/, '').replace(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i, '').replace(/[\. ]+$/, '');
+					var dlstrm = (0, _ytdlCore2.default)(link, { filter: 'audioonly' }).pipe(_fs2.default.createWriteStream('./res/' + fileName + '.mp4'));
+					// .pipe((new ffmpeg({source:}));//fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
+					dlstrm.on('finish', function () {
 
-            console.log("fileName: " + fileName);
-            try {
-              console.log('trying to audio it ');
-              var process = new _ffmpeg2.default('./res/' + fileName + '.mp4');
-              process.then(function (video) {
-                console.log('well?', './res/' + fileName + '.mp4');
-                // Callback mode
-                video.fnExtractSoundToMP3('./res/' + fileName + 'a.mp3', function (error, file) {
-                  console.log('mp333 pls');
-                  if (!error) console.log('Audio file: ' + file);
-                });
-              }, function (err) {
-                console.log('Error: ' + err);
-              });
-            } catch (e) {
-              console.log(e.code);
-              console.log(e.msg);
-            }
-            console.log("done downloading audio!");
-            this.setState({ downloadedItems: this.state.downloadedItems.concat({ title: fileName, ext: '.mp4', thmb: info.iurlhq }), youtubeVideoURL: '' });
-            console.log(this.state.downloadedItems);
-            this.forceUpdate();
-          }.bind(this));
-        }.bind(this));
-      }
-    }
-  }, {
-    key: 'exit',
-    value: function exit() {
-      window.close();
-    }
-  }, {
-    key: 'show',
-    value: function show() {
-      window.show();
-    }
-  }, {
-    key: 'minimize',
-    value: function minimize() {
-      _electron2.default.remote.BrowserWindow.getAllWindows()[0].minimize();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
+						console.log("fileName: " + fileName);
+						try {
+							console.log('trying to audio it ');
+							var process = new _ffmpeg2.default('./res/' + fileName + '.mp4');
+							process.then(function (video) {
+								console.log('well?', './res/' + fileName + '.mp4');
+								// Callback mode
+								video.fnExtractSoundToMP3('./res/' + fileName + 'a.mp3', function (error, file) {
+									console.log('mp333 pls');
+									if (!error) console.log('Audio file: ' + file);
+								});
+							}, function (err) {
+								console.log('Error: ' + err);
+							});
+						} catch (e) {
+							console.log(e.code);
+							console.log(e.msg);
+						}
+						console.log("done downloading audio!");
+						this.setState({ downloadedItems: this.state.downloadedItems.concat({ title: fileName, ext: '.mp4', thmb: info.iurlhq }), youtubeVideoURL: '' });
+						console.log(this.state.downloadedItems);
+						this.forceUpdate();
+					}.bind(this));
+				}.bind(this));
+			}
+		}
+	}, {
+		key: 'exit',
+		value: function exit() {
+			window.close();
+		}
+	}, {
+		key: 'show',
+		value: function show() {
+			window.show();
+		}
+	}, {
+		key: 'minimize',
+		value: function minimize() {
+			_electron2.default.remote.BrowserWindow.getAllWindows()[0].minimize();
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-      console.log('render', this.state);
-      var a = this.props.textt;
-      console.log(a);
-      return _react2.default.createElement(
-        _windows.Window,
-        {
-          theme: this.theme,
-          padding: '0px'
-        },
-        _react2.default.createElement(_windows.TitleBar, { title: 'Youtube Downloader', controls: true,
-          id: 'TitleBar',
-          onCloseClick: this.exit,
-          onMinimizeClick: this.minimize
-        }),
-        _react2.default.createElement(
-          _windows.View,
-          {
-            id: 'MainView',
-            background: '#f5f5f5',
-            paddingLeft: '1em',
-            width: '100%',
-            key: 'MainView'
-          },
-          _react2.default.createElement(
-            'div',
-            { className: 'inputContainer' },
-            _react2.default.createElement(
-              'label',
-              { htmlFor: 'YoutubeVideoURL',
-                className: 'inputLabel'
-              },
-              'YouTube URL'
-            ),
-            _react2.default.createElement('input', {
-              type: 'text',
-              id: 'YoutubeVideoURL',
-              className: 'w10Input label',
-              placeholder: '(http:// | ?v=)',
-              value: this.state.youtubeVideoURL,
-              onChange: function onChange(e) {
-                return _this2.setState({ youtubeVideoURL: e.target.value });
-              }
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'inputContainer' },
-            _react2.default.createElement(
-              'label',
-              { htmlFor: 'YoutubeVideoName',
-                className: 'inputLabel'
-              },
-              'File Name'
-            ),
-            _react2.default.createElement('input', {
-              type: 'text',
-              id: 'YoutubeVideoName',
-              className: 'w10Input label',
-              placeholder: '(optional)',
-              value: this.state.youtubeVideoName,
-              onChange: function onChange(e) {
-                return _this2.setState({ youtubeVideoName: e.target.value });
-              }
-            })
-          ),
-          _react2.default.createElement(_SelectType2.default, {
-            handleChange: function handleChange(e) {
-              return _this2.setState({ youtubeType: e.target.value });
-            },
-            selectValue: 'video' }),
-          _react2.default.createElement(
-            _windows.Button,
-            { push: true, className: 'dlBtn',
-              onClick: this.downloadVideo
-            },
-            'Download'
-          ),
-          _react2.default.createElement(
-            _windows.View,
-            {
-              id: 'ItemsView' },
-            _react2.default.createElement(_DownloadItems2.default, {
-              items: this.state.downloadedItems })
-          )
-        )
-      );
-    }
-  }]);
+			console.log('render', this.state);
+			var a = this.props.textt;
+			console.log(a);
+			return _react2.default.createElement(
+				_windows.Window,
+				{
+					theme: this.theme,
+					padding: '0px'
+				},
+				_react2.default.createElement(_windows.TitleBar, { title: 'Youtube Downloader', controls: true,
+					id: 'TitleBar',
+					onCloseClick: this.exit,
+					onMinimizeClick: this.minimize
+				}),
+				_react2.default.createElement(
+					_windows.View,
+					{
+						id: 'MainView',
+						background: '#f5f5f5',
+						paddingLeft: '1em',
+						width: '100%',
+						key: 'MainView'
+					},
+					_react2.default.createElement(
+						'div',
+						{ className: 'inputContainer' },
+						_react2.default.createElement(
+							'label',
+							{ htmlFor: 'YoutubeVideoURL',
+								className: 'inputLabel'
+							},
+							'YouTube URL'
+						),
+						_react2.default.createElement('input', {
+							type: 'text',
+							id: 'YoutubeVideoURL',
+							className: 'w10Input label',
+							placeholder: '(http:// | ?v=)',
+							value: this.state.youtubeVideoURL,
+							onChange: function onChange(e) {
+								return _this2.setState({ youtubeVideoURL: e.target.value });
+							}
+						})
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'inputContainer' },
+						_react2.default.createElement(
+							'label',
+							{ htmlFor: 'YoutubeVideoName',
+								className: 'inputLabel'
+							},
+							'File Name'
+						),
+						_react2.default.createElement('input', {
+							type: 'text',
+							id: 'YoutubeVideoName',
+							className: 'w10Input label',
+							placeholder: '(optional)',
+							value: this.state.youtubeVideoName,
+							onChange: function onChange(e) {
+								return _this2.setState({ youtubeVideoName: e.target.value });
+							}
+						})
+					),
+					_react2.default.createElement(_SelectType2.default, {
+						handleChange: function handleChange(e) {
+							return _this2.setState({ youtubeType: e.target.value });
+						},
+						selectValue: 'video' }),
+					_react2.default.createElement(
+						_windows.Button,
+						{ push: true, className: 'dlBtn',
+							onClick: this.downloadVideo
+						},
+						'Download'
+					),
+					_react2.default.createElement(
+						_windows.View,
+						{
+							id: 'ItemsView' },
+						_react2.default.createElement(_DownloadItems2.default, {
+							items: this.state.downloadedItems })
+					)
+				)
+			);
+		}
+	}]);
 
-  return Renderer;
+	return Renderer;
 }(_react2.default.Component);
 
 exports.default = Renderer;

@@ -1,12 +1,12 @@
 body{
-  height:auto;
-  width:auto;
-  overflow: hidden;
-  margin: 0px;
+	height:auto;
+	width:auto;
+	overflow: hidden;
+	margin: 0px;
 }
 .dlBtn{
-  height: 5ex;
-  margin-top: 3.3ex;
+	height: 5ex;
+	margin-top: 3.3ex;
 }
 
 #DownloadType{
@@ -15,128 +15,128 @@ body{
 	width:auto;
 	margin-right: 1.5em;
 	padding: .5em;
-  background-color: rgb(249, 249, 249);
-  border-width: 2px;
+	background-color: rgb(249, 249, 249);
+	border-width: 2px;
 }
 #DownloadType:hover{
-  border-color: #000;
+	border-color: #000;
 
 }
 
 #DownloadType:focus{
-  border-color: rgb(0, 99, 174);
-  border-width: 2px;
-  outline: none;
+	border-color: rgb(0, 99, 174);
+	border-width: 2px;
+	outline: none;
 }
 
 #YTMeView{
-  height: auto;
-  width: auto;
+	height: auto;
+	width: auto;
 }
 
 .label{
-  margin-right: 1.5em;
-  width: 14em;
+	margin-right: 1.5em;
+	width: 14em;
 }
 
 #TitleBar{
-  padding-right: 3em;
-  margin-right: 4em;
-  border-top: 3px solid #d9d9d9;
-  border-left: 2px solid #000000;
+	padding-right: 3em;
+	margin-right: 4em;
+	border-top: 3px solid #d9d9d9;
+	border-left: 2px solid #000000;
 }
 
 #MainView{
-  border: 1px solid darkgray;
+	border: 1px solid darkgray;
 }
 
 #ItemsView{
-  display: block;
-  /*width: 100%;*/
-  /*flex-direction: column-reverse;*/
-  /*border-left: 2px solid rgba(128, 128, 128, 0.66);
-  margin-left: 1em;*/
-  position: absolute!important;
-  bottom: 19px;
-  right: 0px;
-  left: 0px;
-  /* border: 2px solid black; */
-  border-style: groove;
-  height: 460px;
-  width: 98%;
-  margin-left: auto;
-  margin-right: auto;
-  overflow-y: scroll;
+	display: block;
+	/*width: 100%;*/
+	/*flex-direction: column-reverse;*/
+	/*border-left: 2px solid rgba(128, 128, 128, 0.66);
+	margin-left: 1em;*/
+	position: absolute!important;
+	bottom: 19px;
+	right: 0px;
+	left: 0px;
+	/* border: 2px solid black; */
+	border-style: groove;
+	height: 460px;
+	width: 98%;
+	margin-left: auto;
+	margin-right: auto;
+	overflow-y: scroll;
 }
 #ItemsView ul{
-  list-style: none;
-  font-family: helvetica, sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  width: 98%;
+	list-style: none;
+	font-family: helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	width: 98%;
 }
 #ItemsView li{
-  border-bottom: 1px solid #d9d9d9;
-  display: flex;
-  align-items: baseline;
+	border-bottom: 1px solid #d9d9d9;
+	display: flex;
+	align-items: baseline;
 }
 
 .mediaTitle{
-  padding-bottom: 0px;
-    /*padding-bottom: 2em;*/
-  /* margin-bottom: 0px; */
-  /*display: inline-block;*/
-  display:flex;
-  flex-direction: column;
-  align-self: flex-start;
-  padding-right: 1.5em;
+	padding-bottom: 0px;
+		/*padding-bottom: 2em;*/
+	/* margin-bottom: 0px; */
+	/*display: inline-block;*/
+	display:flex;
+	flex-direction: column;
+	align-self: flex-start;
+	padding-right: 1.5em;
 }
 
 .mediaElm{
-  display: flex;
-  flex-direction: row;
-  /*position: fixed;height: 5ex;right: 2em;top: 13em;*/
-  width: 70%;
-  /* float: right; */
+	display: flex;
+	flex-direction: row;
+	/*position: fixed;height: 5ex;right: 2em;top: 13em;*/
+	width: 70%;
+	/* float: right; */
 }
 
 #ItemsView img{
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .inputContainer{
-  cursor: default;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+	cursor: default;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
 }
 .inputLabel{
-  -webkit-user-select: none;
-  cursor: default;
-  line-height: 25.96px;
-  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 14px;
-  display: flex;
-  margin-top: 5px;
+	-webkit-user-select: none;
+	cursor: default;
+	line-height: 25.96px;
+	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+	font-size: 14px;
+	display: flex;
+	margin-top: 5px;
 }
 .w10Input{
-  border-width: 2px;
-  border-style: solid;
-  border-color: rgb(148, 148, 148);
-  padding: 2px 10px 3px;
-  line-height: 23px;
-  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 100;
-  background-color: #f9f9f9;
-  margin-bottom: 18px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: rgb(148, 148, 148);
+	padding: 2px 10px 3px;
+	line-height: 23px;
+	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+	font-size: 15px;
+	font-weight: 100;
+	background-color: #f9f9f9;
+	margin-bottom: 18px;
 }
 
 .w10Input:hover{
-  border-color: #111;
+	border-color: #111;
 }
 .w10Input:focus{
-  background-color: #fff;
-  border-color: rgb(0, 99, 174);
-  outline: none;
+	background-color: #fff;
+	border-color: rgb(0, 99, 174);
+	outline: none;
 }
