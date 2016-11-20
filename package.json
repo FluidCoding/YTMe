@@ -1,40 +1,41 @@
 {
-	"name": "YoutubeMe",
-	"version": "1.0.0",
-	"description": "A Youtube Downloader in electron",
-	"main": "main.js",
-	"scripts": {
-		"start": "electron ."
-	},
-	"repository": "https://github.com/FluidCoding/YTMe",
-	"keywords": [
-		"Electron",
-		"React"
-	],
-	"author": "GitHub",
-	"license": "CC0-1.0",
-	"devDependencies": {
-		"electron": "^1.4.1"
-	},
-	"dependencies": {
-		"babel-loader": "^6.2.7",
-		"babel-polyfill": "^6.16.0",
-		"babel-preset-es2015": "latest",
-		"babel-preset-react": "latest",
-		"babel-preset-stage-0": "latest",
-		"babel-register": "^6.3.13",
-		"electron-reload": "latest",
-		"ffmpeg": "0.0.4",
-		"json-loader": "^0.5.4",
-		"react": "latest",
-		"react-desktop": "latest",
-		"react-dom": "latest",
-		"ytdl-core": ""
-	},
-	"babel": {
-		"presets": [
-			"es2015",
-			"react"
-		]
-	}
+  "name": "YoutubeMe",
+  "version": "1.0.0",
+  "description": "A Youtube Downloader in electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/FluidCoding/YTMe",
+  "keywords": [
+    "Electron",
+    "React"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  },
+  "dependencies": {
+    "babel-loader": "^6.2.7",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "latest",
+    "babel-preset-react": "latest",
+    "babel-preset-stage-0": "latest",
+    "babel-register": "^6.3.13",
+    "electron-reload": "latest",
+    "ffmpeg": "0.0.4",
+    "json-loader": "^0.5.4",
+    "react": "latest",
+    "react-desktop": "latest",
+    "react-dom": "latest",
+    "when": "^3.7.7",
+    "ytdl-core": ""
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  }
 }

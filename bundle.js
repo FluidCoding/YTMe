@@ -39127,16 +39127,15 @@ var Renderer = function (_React$Component) {
 					var dlstrm = (0, _ytdlCore2.default)(link, { filter: 'audioonly' }).pipe(_fs2.default.createWriteStream('./res/' + fileName + '.mp4'));
 					// .pipe((new ffmpeg({source:}));//fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
 					dlstrm.on('finish', function () {
-
 						console.log("fileName: " + fileName);
 						try {
 							console.log('trying to audio it ');
 							var process = new _ffmpeg2.default('./res/' + fileName + '.mp4');
 							process.then(function (video) {
-								console.log('well?', './res/' + fileName + '.mp4');
+								console.log('well?', video, './res/' + fileName + '.mp4');
 								// Callback mode
-								video.fnExtractSoundToMP3('./res/' + fileName + 'a.mp3', function (error, file) {
-									console.log('mp333 pls');
+								video.fnExtractSoundToMP3('./res/' + fileName + '.mp3', function (error, file) {
+									console.log('mp333 pls', error, file);
 									if (!error) console.log('Audio file: ' + file);
 								});
 							}, function (err) {

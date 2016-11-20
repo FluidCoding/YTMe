@@ -78,16 +78,15 @@ export default class Renderer extends React.Component{
 						.pipe(fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
 						// .pipe((new ffmpeg({source:}));//fsys.createWriteStream('./res/' + ( fileName ) + '.mp4') );
 				dlstrm.on('finish', function(){
-
 					console.log("fileName: " + fileName);
 					try {
 						console.log('trying to audio it ');
 						var process = new ffmpeg('./res/' + ( fileName ) + '.mp4');
 						process.then(function (video) {
-							console.log('well?', './res/' + ( fileName ) + '.mp4')
+							console.log('well?',video, './res/' + ( fileName ) + '.mp4')
 							// Callback mode
-							video.fnExtractSoundToMP3('./res/' + ( fileName ) + 'a.mp3', function (error, file) {
-								console.log('mp333 pls')
+							video.fnExtractSoundToMP3('./res/' + ( fileName ) + '.mp3', function (error, file) {
+								console.log('mp333 pls', error, file)
 							if (!error)
 								console.log('Audio file: ' + file);
 							});
